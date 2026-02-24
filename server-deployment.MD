@@ -1,3 +1,6 @@
+# AgentOrchestrator — Architecture Overview
+
+```mermaid
 graph TB
     subgraph DEV["🧑‍💻 DEVELOPER INTERFACE — @step decorator"]
         direction LR
@@ -93,3 +96,4 @@ graph TB
     class TOKEN,OBS critical
     class PLUGIN,CLIENT client
     class C1,C2,C3,C4 code
+```
