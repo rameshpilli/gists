@@ -1,0 +1,1444 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Aiden — Morning Intelligence Brief — Mon May 4, 2026</title>
+<style>
+  /*  -------------------------------------------------------------
+      Template branding preserved — only inner content is redesigned.
+      Outer chrome (Aiden hero, navy section bars, footer) untouched.
+      ------------------------------------------------------------- */
+
+  :root {
+    --rbc-navy:    #003b71;
+    --rbc-navy-2:  #0a2845;        /* darker navy used in original section headers */
+    --rbc-navy-3:  #1f5a96;        /* mid blue used in MIB header */
+    --rbc-yellow:  #fedf01;
+    --ink:         #1a1a1a;
+    --ink-soft:    #2c2d33;
+    --muted:       #6b6b6b;
+    --muted-2:     #8a8a8a;
+    --hairline:    #dfe3e8;
+    --hairline-2:  #c8d0d8;
+    --bg:          #ffffff;
+    --bg-alt:      #f3f6f9;        /* subtle row stripe */
+    --bg-warm:     #fafbfc;
+    --up:          #1c6e4a;
+    --up-bg:       #e6efe8;
+    --down:        #a52a2a;
+    --down-bg:     #f3e3df;
+    --flat:        #6b6b6b;
+    --amber:       #8a6a14;
+    --amber-bg:    #fff4d1;
+    --hook-bg:     #fffcec;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #e3e6ea;
+    color: var(--ink);
+    font-family: Arial, Helvetica, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  body { padding: 24px 12px 60px; }
+
+  .stage {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--bg);
+    box-shadow:
+      0 1px 0 rgba(0,0,0,.04),
+      0 24px 48px -16px rgba(0,0,0,.16);
+  }
+
+  /* ===========================================================
+     1) AIDEN HERO BANNER  — UNCHANGED FROM ORIGINAL TEMPLATE
+     =========================================================== */
+  .aiden-hero {
+    position: relative;
+    background: linear-gradient(95deg, #0a2845 0%, #133b66 50%, #1a4a82 100%);
+    color: #fff;
+    padding: 38px 36px 32px;
+    overflow: hidden;
+    min-height: 200px;
+  }
+  .aiden-hero .network {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 60%;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  .aiden-hero .brand {
+    position: relative;
+    z-index: 2;
+  }
+  .aiden-hero .brand-mark {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .aiden-hero .wordmark {
+    font-family: "Trebuchet MS", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 78px;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    color: #d6e7ff;
+    background: linear-gradient(180deg, #cfe2ff 0%, #6aa9e9 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .aiden-hero .tm {
+    color: #cfe2ff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .04em;
+  }
+  .aiden-hero .tagline {
+    margin-top: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: .26em;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  .aiden-hero .rbc {
+    position: absolute;
+    top: 26px;
+    right: 32px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+  }
+  .aiden-hero .rbc-shield {
+    width: 38px; height: 38px;
+    background: #fedf01;
+    color: #003b71;
+    font-weight: 800;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    letter-spacing: .02em;
+  }
+  .aiden-hero .rbc-text {
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  .aiden-hero .rbc-text b { display: block; font-size: 13px; font-weight: 700; }
+
+  /* ===========================================================
+     2) MIB SUB-HEADER  — UNCHANGED FROM ORIGINAL TEMPLATE
+     =========================================================== */
+  .mib-header {
+    background: #fff;
+    padding: 20px 32px 18px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .mib-header h1 {
+    margin: 0;
+    color: var(--rbc-navy);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: .02em;
+  }
+  .mib-header .meta {
+    margin-top: 4px;
+    color: var(--rbc-navy);
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .mib-header .prep {
+    margin-top: 2px;
+    color: var(--ink);
+    font-size: 13px;
+  }
+
+  /* ===========================================================
+     3) NAVY SECTION HEADER BARS  — UNCHANGED STYLING
+     =========================================================== */
+  .section-bar {
+    background: var(--rbc-navy-2);
+    color: #fff;
+    padding: 11px 22px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  /* ===========================================================
+     4) EXECUTIVE SUMMARY  — CONTENT REDESIGNED
+     (keeps the navy header bar above)
+     =========================================================== */
+  .exec {
+    padding: 18px 32px 22px;
+    background: var(--bg-warm);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .exec h3 {
+    margin: 0 0 4px;
+    color: var(--rbc-navy);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  .exec .subline {
+    margin: 0 0 14px;
+    color: var(--muted);
+    font-size: 12px;
+    font-style: italic;
+  }
+  .exec .tldr {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: grid;
+    gap: 0;
+  }
+  .exec .tldr li {
+    display: grid;
+    grid-template-columns: 14px 1fr auto;
+    gap: 12px;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--hairline-2);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .exec .tldr li:last-child { border-bottom: none; }
+  .exec .tldr li b { color: var(--ink); font-weight: 700; }
+  .exec .dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    margin-top: 6px;
+    justify-self: center;
+  }
+  .exec .dot.up   { background: var(--up); }
+  .exec .dot.down { background: var(--down); }
+  .exec .dot.flat { background: var(--flat); }
+  .exec .tag {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--rbc-navy);
+    font-weight: 700;
+    white-space: nowrap;
+    background: #e8eef5;
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+
+  /* Key IB Implications - kept as a labeled subsection inside Exec Summary */
+  .implications {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--hairline);
+  }
+  .implications h4 {
+    margin: 0 0 12px;
+    color: var(--rbc-navy);
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .implications ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .implications li {
+    display: grid;
+    grid-template-columns: 84px 14px 1fr;
+    gap: 10px;
+    align-items: start;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .implications li .who {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--rbc-navy);
+    font-weight: 700;
+    background: #e8eef5;
+    padding: 3px 6px;
+    border-radius: 3px;
+    text-align: center;
+    margin-top: 1px;
+  }
+  .implications li .arrow {
+    font-size: 14px;
+    margin-top: 0px;
+    text-align: center;
+    font-weight: 700;
+  }
+  .implications li .arrow.up   { color: var(--up); }
+  .implications li .arrow.down { color: var(--down); }
+  .implications li .arrow.flat { color: var(--muted); }
+  .implications li b { color: var(--ink); font-weight: 700; }
+
+  /* ===========================================================
+     5) MOVERS RIBBON (small addition between Exec Summary and Tier 1)
+     =========================================================== */
+  .movers {
+    padding: 12px 32px;
+    background: #fff;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .movers .label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--muted);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .movers .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+  }
+  .mover {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    font-size: 12.5px;
+    font-family: "Consolas", "SF Mono", Menlo, monospace;
+  }
+  .mover .tk { color: var(--ink); font-weight: 700; }
+  .mover .pct.up   { color: var(--up); font-weight: 700; }
+  .mover .pct.down { color: var(--down); font-weight: 700; }
+  .mover .pct.flat { color: var(--flat); }
+
+  /* ===========================================================
+     6) TIER TABLES — STRUCTURE KEPT, CELLS REDESIGNED
+     =========================================================== */
+  .tier {
+    background: #fff;
+  }
+  .tier-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  .tier-table thead th {
+    background: var(--bg-alt);
+    color: var(--rbc-navy);
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: 10px 14px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .tier-table colgroup .c-arrow   { width: 36px; }
+  .tier-table colgroup .c-company { width: 132px; }
+  .tier-table colgroup .c-ticker  { width: 78px; }
+  .tier-table colgroup .c-head    { width: auto; }
+  .tier-table colgroup .c-angle   { width: 40%; }
+
+  .tier-table tbody td {
+    vertical-align: top;
+    padding: 14px 14px;
+    border-bottom: 1px solid var(--hairline);
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .tier-table tbody tr:last-child td { border-bottom: none; }
+  .tier-table tbody tr.alt td { background: var(--bg-warm); }
+
+  .arrow-cell {
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    padding-top: 18px !important;
+  }
+  .arrow-cell.up   { color: var(--up); }
+  .arrow-cell.down { color: var(--down); }
+  .arrow-cell.flat { color: var(--muted); }
+
+  .tier-table .company {
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 14px;
+  }
+  .tier-table .ticker {
+    font-family: "Consolas", "SF Mono", Menlo, monospace;
+    color: var(--rbc-navy);
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Sentiment chip — replaces wall-of-prose framing */
+  .chip {
+    display: inline-block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    padding: 3px 7px;
+    border-radius: 3px;
+    font-weight: 700;
+    border: 1px solid;
+    margin-bottom: 8px;
+  }
+  .chip.up    { color: var(--up);    background: var(--up-bg);   border-color: var(--up); }
+  .chip.down  { color: var(--down);  background: var(--down-bg); border-color: var(--down); }
+  .chip.watch { color: var(--amber); background: var(--amber-bg); border-color: var(--amber); }
+  .chip.flat  { color: var(--flat);  background: var(--bg-alt);   border-color: var(--hairline-2); }
+
+  /* Headline cell — lede + tight detail bullets */
+  .lede {
+    color: var(--ink);
+    font-weight: 700;
+    margin: 0 0 6px;
+    font-size: 13.5px;
+    line-height: 1.45;
+  }
+  .detail {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--ink-soft);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .detail li {
+    padding-left: 12px;
+    position: relative;
+    margin-top: 3px;
+  }
+  .detail li::before {
+    content: "·";
+    position: absolute;
+    left: 2px;
+    top: -2px;
+    color: var(--muted-2);
+    font-weight: 700;
+  }
+  .src {
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .src a { color: var(--rbc-navy); text-decoration: none; }
+
+  /* IB Angle cell — banker shorthand, not LLM essay */
+  .angle {
+    background: var(--hook-bg);
+    border-left: 3px solid var(--rbc-yellow);
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .angle .hook-label {
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--rbc-navy);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .angle b { color: var(--ink); font-weight: 700; }
+  .angle .actions {
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .angle .actions li {
+    padding-left: 14px;
+    position: relative;
+    font-size: 12.5px;
+    margin-top: 4px;
+  }
+  .angle .actions li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--rbc-navy);
+    font-weight: 700;
+  }
+
+  /* "No material developments" row — make it visually quiet */
+  .empty-row td {
+    color: var(--muted) !important;
+    font-style: italic;
+    font-size: 12.5px;
+  }
+
+  /* ===========================================================
+     7) SECTOR THEMES — STRUCTURE KEPT, CONTENT REDESIGNED
+     =========================================================== */
+  .themes {
+    padding: 18px 32px 24px;
+    background: #fff;
+  }
+  .theme {
+    border: 1px solid var(--hairline);
+    border-left: 4px solid var(--rbc-navy);
+    background: var(--bg-warm);
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .theme:last-child { margin-bottom: 0; }
+  .theme h4 {
+    margin: 0 0 8px;
+    color: var(--rbc-navy);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  .theme h4 .num {
+    display: inline-block;
+    background: var(--rbc-navy);
+    color: #fff;
+    padding: 2px 7px;
+    font-size: 10px;
+    margin-right: 8px;
+    border-radius: 2px;
+    vertical-align: 2px;
+    letter-spacing: 0.05em;
+  }
+  .theme .body {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .theme .body b { color: var(--ink); font-weight: 700; }
+  .theme .imp {
+    margin-top: 10px;
+    padding: 10px 12px;
+    background: var(--hook-bg);
+    border-left: 3px solid var(--rbc-yellow);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .theme .imp b {
+    display: block;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--rbc-navy);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  /* ===========================================================
+     8) UPCOMING EVENTS — STRUCTURE KEPT, MILD POLISH
+     =========================================================== */
+  .events { background: #fff; }
+  .events table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .events thead th {
+    background: var(--bg-alt);
+    color: var(--rbc-navy);
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: 10px 14px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .events tbody td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--hairline);
+    font-size: 13px;
+    vertical-align: top;
+  }
+  .events tbody tr:last-child td { border-bottom: none; }
+  .events tbody tr.alt td { background: var(--bg-warm); }
+  .events td.date {
+    color: var(--rbc-navy);
+    font-weight: 700;
+    width: 130px;
+    white-space: nowrap;
+  }
+  .events td.tk {
+    width: 180px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .events td.tk .ticker-mono {
+    font-family: "Consolas", "SF Mono", Menlo, monospace;
+    color: var(--rbc-navy);
+    font-size: 12px;
+  }
+  .events td.ev { color: var(--ink-soft); }
+  .events .group-row td {
+    background: #eef3f8;
+    color: var(--rbc-navy);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-weight: 700;
+    padding: 6px 14px;
+  }
+
+  /* ===========================================================
+     9) FOOTER  — UNCHANGED FROM ORIGINAL TEMPLATE
+     =========================================================== */
+  .footer {
+    background: var(--rbc-navy-2);
+    color: #fff;
+    padding: 24px 32px 28px;
+    text-align: center;
+  }
+  .footer .q {
+    color: var(--rbc-yellow);
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 6px;
+    letter-spacing: 0.01em;
+  }
+  .footer .ftxt {
+    font-size: 13px;
+    color: #d8e2ee;
+    line-height: 1.55;
+  }
+  .footer .ftxt a {
+    color: var(--rbc-yellow);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .footer .colophon {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #1a3a5a;
+    font-size: 11px;
+    color: #8ea4be;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .aiden-hero { padding: 28px 22px; }
+    .aiden-hero .wordmark { font-size: 56px; }
+    .aiden-hero .rbc { top: 18px; right: 18px; }
+    .mib-header, .exec, .themes { padding-left: 20px; padding-right: 20px; }
+    .tier-table colgroup .c-company { width: 110px; }
+    .tier-table colgroup .c-angle { width: 38%; }
+    .implications li { grid-template-columns: 70px 14px 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- =========================================================
+       AIDEN HERO  (unchanged)
+       ========================================================= -->
+  <header class="aiden-hero">
+    <svg class="network" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="g1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#9bd1ff" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#9bd1ff" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <g stroke="#9bd1ff" stroke-width="0.5" stroke-opacity="0.7" fill="none">
+        <line x1="60" y1="40"  x2="180" y2="80"/>
+        <line x1="180" y1="80" x2="120" y2="160"/>
+        <line x1="180" y1="80" x2="280" y2="50"/>
+        <line x1="280" y1="50" x2="370" y2="120"/>
+        <line x1="370" y1="120" x2="470" y2="60"/>
+        <line x1="470" y1="60" x2="540" y2="140"/>
+        <line x1="370" y1="120" x2="280" y2="180"/>
+        <line x1="280" y1="180" x2="120" y2="160"/>
+        <line x1="180" y1="80" x2="370" y2="120"/>
+        <line x1="60" y1="40" x2="120" y2="160"/>
+        <line x1="540" y1="140" x2="430" y2="190"/>
+        <line x1="430" y1="190" x2="280" y2="180"/>
+        <line x1="470" y1="60" x2="370" y2="120"/>
+      </g>
+      <g fill="#cfe7ff">
+        <circle cx="60"  cy="40"  r="3"/>
+        <circle cx="180" cy="80"  r="4"/>
+        <circle cx="120" cy="160" r="3"/>
+        <circle cx="280" cy="50"  r="3.5"/>
+        <circle cx="370" cy="120" r="5"/>
+        <circle cx="470" cy="60"  r="3.5"/>
+        <circle cx="540" cy="140" r="3"/>
+        <circle cx="280" cy="180" r="3"/>
+        <circle cx="430" cy="190" r="2.5"/>
+      </g>
+      <circle cx="370" cy="120" r="22" fill="url(#g1)"/>
+      <circle cx="180" cy="80" r="14" fill="url(#g1)" opacity="0.8"/>
+    </svg>
+
+    <div class="rbc">
+      <div class="rbc-shield">RBC</div>
+      <div class="rbc-text"><b>Capital</b>Markets</div>
+    </div>
+
+    <div class="brand">
+      <div class="brand-mark">
+        <span class="wordmark">Aiden</span>
+        <span class="tm">TM</span>
+      </div>
+      <div class="tagline">Daily Digest</div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       MIB SUB-HEADER  (unchanged)
+       ========================================================= -->
+  <div class="mib-header">
+    <h1>MORNING INTELLIGENCE BRIEF</h1>
+    <div class="meta">GIB US Technology Coverage — Monday, May 04, 2026</div>
+    <div class="prep">Prepared for Ramesh Pilli</div>
+  </div>
+
+  <!-- =========================================================
+       EXECUTIVE SUMMARY  (header bar unchanged, content redesigned)
+       ========================================================= -->
+  <div class="section-bar">EXECUTIVE SUMMARY</div>
+  <section class="exec">
+    <h3>The 60-second read</h3>
+    <p class="subline">Five takeaways — full detail in tiers below.</p>
+
+    <ul class="tldr">
+      <li>
+        <span class="dot up"></span>
+        <span><b>Megacap earnings clear the AI-capex overhang.</b> MSFT +28% EPS / 40% Azure, GOOGL Cloud +63% on $180–190B 2026 capex guide, V +8.3% post-print.</span>
+        <span class="tag">Tailwind</span>
+      </li>
+      <li>
+        <span class="dot up"></span>
+        <span><b>Anthropic ↔ Blackstone / GS / H&amp;F seal a $1.5B JV</b> for AI-native enterprise services to PE portfolios — sets a new template for sponsor-AI alignment.</span>
+        <span class="tag">Mandate hook</span>
+      </li>
+      <li>
+        <span class="dot up"></span>
+        <span><b>Chip / storage analysts repriced overnight.</b> WDC three PT raises within hours (+$215 / +$200 / +$140). MCHP MS to $92 on 354.6% projected EPS growth.</span>
+        <span class="tag">Repricing</span>
+      </li>
+      <li>
+        <span class="dot down"></span>
+        <span><b>Legacy software cracking.</b> IBM −26.2% / 3M at 52-wk lows despite 23.1% undervaluation. FIG −16% in April after Anthropic's Claude Design launch. MDB facing Schall Law probe + guidance miss.</span>
+        <span class="tag">Defensive M&amp;A</span>
+      </li>
+      <li>
+        <span class="dot flat"></span>
+        <span><b>Asia tech rips to records.</b> MSCI Asia Pac +2.3%, EM index +2.9% record high, Asian tech gauge +4.7% — index advisory &amp; cross-border opps active.</span>
+        <span class="tag">Cross-border</span>
+      </li>
+    </ul>
+
+    <!-- Key IB Implications — kept inside Executive Summary section as in original -->
+    <div class="implications">
+      <h4>Key IB Implications</h4>
+      <ul>
+        <li>
+          <span class="who">Sponsors</span>
+          <span class="arrow up">↑</span>
+          <span><b>Anthropic JV is the new comparable for sponsor-AI deals.</b> Expect bolt-on AI-services acquisitions targeting PE portfolios; co-invest opportunities likely.</span>
+        </li>
+        <li>
+          <span class="who">ECM / Adv</span>
+          <span class="arrow up">↑</span>
+          <span><b>MSFT / GOOGL / CRM beats signal sustained enterprise AI capex cycles</b> — advisory windows around cloud migration, AI infra financing, and mid-market strategic partnerships.</span>
+        </li>
+        <li>
+          <span class="who">DCM</span>
+          <span class="arrow flat">→</span>
+          <span><b>WDC / MCHP repricing opens a refinancing &amp; capital-structure window</b> for capital-intensive infrastructure vendors before the cycle peaks.</span>
+        </li>
+        <li>
+          <span class="who">Spec Sit</span>
+          <span class="arrow flat">→</span>
+          <span><b>MDB litigation + guidance miss = distressed M&amp;A or activist setup.</b> Monitor for take-private interest from larger data platforms once legal clarity emerges.</span>
+        </li>
+        <li>
+          <span class="who">Activist</span>
+          <span class="arrow down">↓</span>
+          <span><b>IBM 52-wk lows + 23.1% undervaluation = textbook agitator setup.</b> Build the activist-defense / strategic-review playbook now.</span>
+        </li>
+        <li>
+          <span class="who">Software M&amp;A</span>
+          <span class="arrow down">↓</span>
+          <span><b>FIG −16% post-Claude Design.</b> Defensive advisory window open — pitch board on partnership / strategic-buyer scenarios while valuation is dislocated.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       MOVERS RIBBON  (small addition — same template style)
+       ========================================================= -->
+  <div class="movers">
+    <div class="label">Coverage movers · indicative pre-mkt / overnight</div>
+    <div class="row">
+      <span class="mover"><span class="tk">MSFT</span><span class="pct up">+4.8%</span></span>
+      <span class="mover"><span class="tk">GOOGL</span><span class="pct up">+3.6%</span></span>
+      <span class="mover"><span class="tk">V</span><span class="pct up">+8.3%</span></span>
+      <span class="mover"><span class="tk">CRM</span><span class="pct up">+2.1%</span></span>
+      <span class="mover"><span class="tk">WDC</span><span class="pct up">+5.4%</span></span>
+      <span class="mover"><span class="tk">MCHP</span><span class="pct up">+3.2%</span></span>
+      <span class="mover"><span class="tk">AAPL</span><span class="pct up">+2.4%</span></span>
+      <span class="mover"><span class="tk">INTC</span><span class="pct up">+1.6%</span></span>
+      <span class="mover"><span class="tk">IBM</span><span class="pct down">−1.9%</span></span>
+      <span class="mover"><span class="tk">MDB</span><span class="pct down">−4.2%</span></span>
+      <span class="mover"><span class="tk">FIG</span><span class="pct down">−2.7%</span></span>
+      <span class="mover"><span class="tk">RBLX</span><span class="pct down">−6.1%</span></span>
+      <span class="mover"><span class="tk">MBLY</span><span class="pct down">−3.4%</span></span>
+      <span class="mover"><span class="tk">NVDA</span><span class="pct flat">— flat</span></span>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       TIER 1 — STRATEGIC PRIORITY  (header unchanged, cells redesigned)
+       ========================================================= -->
+  <div class="section-bar">TIER 1 — STRATEGIC PRIORITY</div>
+  <section class="tier">
+    <table class="tier-table">
+      <colgroup>
+        <col class="c-arrow"/>
+        <col class="c-company"/>
+        <col class="c-ticker"/>
+        <col class="c-head"/>
+        <col class="c-angle"/>
+      </colgroup>
+      <thead>
+        <tr><th></th><th>Company</th><th>Ticker</th><th>Headline</th><th>IB Angle</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="arrow-cell up">↑</td>
+          <td><div class="company">Anthropic</div></td>
+          <td><span class="ticker">ANTHROPIC</span></td>
+          <td>
+            <span class="chip up">Mandate hook</span>
+            <p class="lede">$1.5B JV with Blackstone, Goldman Sachs &amp; Hellman &amp; Friedman to deploy Claude into PE portfolio operations.</p>
+            <ul class="detail">
+              <li>Standalone entity; AI-native enterprise services</li>
+              <li>Targets PE-backed portfolios first</li>
+              <li>Separately, in early talks with London-based Fractile for AI inference chips</li>
+            </ul>
+            <div class="src">Sources: <a href="#">[3]</a> <a href="#">[2]</a></div>
+          </td>
+          <td>
+            <div class="angle">
+              <span class="hook-label">IB Hook</span>
+              <b>New comparable for sponsor-AI deals.</b> Expect bolt-on AI-services acquisitions targeting PE portfolios.
+              <ul class="actions">
+                <li>Brief BX / GS / H&amp;F PE teams</li>
+                <li>Prep parallel JV / co-invest pitches</li>
+                <li>Add to deal radar; flag chip-supply angle</li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="alt">
+          <td class="arrow-cell flat">→</td>
+          <td><div class="company">Dynatrace</div></td>
+          <td><span class="ticker">DT</span></td>
+          <td>
+            <span class="chip watch">Watch</span>
+            <p class="lede">Elevated share-price volatility on recent moves — no specific catalyst disclosed.</p>
+            <ul class="detail">
+              <li>Trading-volume spike noted by analysts</li>
+              <li>No company news; technical / positioning driven</li>
+            </ul>
+          </td>
+          <td>
+            <div class="angle">
+              <span class="hook-label">IB Hook</span>
+              Volatility may signal market repositioning ahead of next print. <b>Monitor; no action this week.</b>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="arrow-cell down">↓</td>
+          <td><div class="company">IBM</div></td>
+          <td><span class="ticker">IBM</span></td>
+          <td>
+            <span class="chip down">Activist setup</span>
+            <p class="lede">52-wk lows; trading at 23.1% discount to fair value despite hybrid-cloud + AI repositioning.</p>
+            <ul class="detail">
+              <li>Stock −6.4% / 1M, −26.2% / 3M, −20.3% YTD</li>
+              <li>Released CEO study reshaping C-suite for the AI era</li>
+              <li>Market not rewarding hybrid-cloud / consulting AI thesis</li>
+            </ul>
+            <div class="src">Sources: <a href="#">[1]</a> <a href="#">[3]</a> <a href="#">[2]</a></div>
+          </td>
+          <td>
+            <div class="angle">
+              <span class="hook-label">IB Hook</span>
+              <b>Build the activist-defense / strategic-review playbook.</b>
+              <ul class="actions">
+                <li>Capital structure optimization scenarios</li>
+                <li>Dividend / buyback policy review</li>
+                <li>Non-core asset divestiture mapping</li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="alt">
+          <td class="arrow-cell up">↑</td>
+          <td><div class="company">Microsoft</div></td>
+          <td><span class="ticker">MSFT</span></td>
+          <td>
+            <span class="chip up">Beat</span>
+            <p class="lede">Q3 FY2026 EPS $10.44 vs $8.15 consensus; revenue $56.3B vs $55.5B; Azure +40% in CC.</p>
+            <ul class="detail">
+              <li>Capex approaching historical annual levels — anchors infrastructure thesis</li>
+              <li>Mgmt emphasizing capacity expansion + agentic AI adoption</li>
+            </ul>
+          </td>
+          <td>
+            <div class="angle">
+              <span class="hook-label">IB Hook</span>
+              Sustained AI-revenue acceleration supports <b>large-scale infrastructure M&amp;A</b> and strategic deals in AI / cloud adjacencies.
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="arrow-cell flat">→</td>
+          <td><div class="company">Salesforce</div></td>
+          <td><span class="ticker">CRM</span></td>
+          <td>
+            <span class="chip watch">Mixed</span>
+            <p class="lede">Agentforce + Data 360 hit $1.4B ARR (+114% YoY); CRM cuts 4,000 support roles citing AI automation.</p>
+            <ul class="detail">
+              <li>High-margin AI/automation product mix accelerating</li>
+              <li>Aggressive layoffs may invite activist scrutiny</li>
+              <li>Deepening Google Cloud agentic-workflow partnership</li>
+            </ul>
+            <div class="src">Sources: <a href="#">[2]</a> <a href="#">[3]</a> <a href="#">[4]</a></div>
+          </td>
+          <td>
+            <div class="angle">
+              <span class="hook-label">IB Hook</span>
+              Possible <b>capital structure / special-dividend advisory</b> if activists arrive. Watch for opportunistic <b>Google-led partner deals</b>.
+            </div>
+          </td>
+        </tr>
+
+        <tr class="alt">
+          <td class="arrow-cell up">↑</td>
+          <td><div class="company">Databricks</div></td>
+          <td><span class="ticker">DATABRICKS</span></td>
+          <td>
+            <span class="chip up">Ecosystem</span>
+            <p class="lede">LakeFusion (Databricks-native MDM) closes $7.5M seed led by Silverton.</p>
+            <ul class="detail">
+              <li>Active VC funding around Databricks ecosystem</li>
+              <li>Data + AI Summit Jun 15–18 (Moscone Center, SF)</li>
+            </ul>
+          </td>
+          <td>
+            <div class="angle">
+              <span class="hook-label">IB Hook</span>
+              Strong VC appetite for Databricks-adjacent plays. <b>Map Databricks-ecosystem private targets</b> ahead of summit.
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="arrow-cell flat">→</td>
+          <td><div class="company">Qualtrics</div></td>
+          <td><span class="ticker">QLTRX</span></td>
+          <td colspan="2" style="color: var(--muted); font-style: italic; font-size: 12.5px;">No material developments this period.</td>
+        </tr>
+
+        <tr class="alt">
+          <td class="arrow-cell down">↓</td>
+          <td><div class="company">MongoDB</div></td>
+          <td><span class="ticker">MDB</span></td>
+          <td>
+            <span class="chip down">Distressed</span>
+            <p class="lede">Schall Law shareholder investigation + guidance miss; analyst commentary still flags 33%+ upside.</p>
+            <ul class="detail">
+              <li>Atlas: 72% revenue / 29% growth / $2B+ ARR</li>
+              <li>Litigation = governance overhang; complicates capital markets activity</li>
+            </ul>
+            <div class="src">Sources: <a href="#">[1]</a> <a href="#">[2]</a></div>
+          </td>
+          <td>
+            <div class="angle">
+              <span class="hook-label">IB Hook</span>
+              <b>Distressed M&amp;A / take-private candidate</b> once litigation clears. Track strategic buyer interest from larger data platforms.
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="arrow-cell up">↑</td>
+          <td><div class="company">OpenAI</div></td>
+          <td><span class="ticker">OPENAI</span></td>
+          <td>
+            <span class="chip up">Capital</span>
+            <p class="lede">$10B JV with PE firms; over $4B in new investor commitments secured.</p>
+            <ul class="detail">
+              <li>Signals preference for alternative capitalization vs traditional equity</li>
+              <li>Preserves IPO optionality with diversified ownership</li>
+            </ul>
+          </td>
+          <td>
+            <div class="angle">
+              <span class="hook-label">IB Hook</span>
+              Sets a new structuring template for AI-cap raises. <b>Pitch comparable structures</b> to large private AI names.
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- =========================================================
+       TIER 2 — ACTIVE COVERAGE  (header unchanged, cells redesigned)
+       ========================================================= -->
+  <div class="section-bar">TIER 2 — ACTIVE COVERAGE</div>
+  <section class="tier">
+    <table class="tier-table">
+      <colgroup>
+        <col class="c-arrow"/>
+        <col class="c-company"/>
+        <col class="c-ticker"/>
+        <col class="c-head"/>
+        <col class="c-angle"/>
+      </colgroup>
+      <thead>
+        <tr><th></th><th>Company</th><th>Ticker</th><th>Headline</th><th>IB Angle</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="arrow-cell up">↑</td>
+          <td><div class="company">Intel</div></td>
+          <td><span class="ticker">INTC</span></td>
+          <td>
+            <span class="chip up">Talent / Setup</span>
+            <p class="lede">Two senior hires: ex-Qualcomm Alex Katouzian → EVP CCG &amp; Physical AI; Pushkar Ranade → permanent CTO.</p>
+            <ul class="detail">
+              <li>Gross margins 41% (+1.8pp YoY); EPS $0.29 vs breakeven guidance</li>
+              <li>Strategy push into quantum, neuromorphic, photonics</li>
+            </ul>
+            <div class="src">Sources: <a href="#">[2]</a> <a href="#">[5]</a> <a href="#">[4]</a> <a href="#">[3]</a></div>
+          </td>
+          <td>
+            <div class="angle">
+              <span class="hook-label">IB Hook</span>
+              Operating momentum + leadership signal supports <b>debt refi narrative</b> and <b>strategic JV pitches</b> in emerging-tech segments.
+            </div>
+          </td>
+        </tr>
+
+        <tr class="alt">
+          <td class="arrow-cell up">↑</td>
+          <td><div class="company">Microchip</div></td>
+          <td><span class="ticker">MCHP</span></td>
+          <td>
+            <span class="chip up">Repriced</span>
+            <p class="lede">Morgan Stanley to $92 on 354.6% projected EPS growth.</p>
+            <ul class="detail">
+              <li>AI-infrastructure tailwind</li>
+              <li>Post-quantum cryptography expansion creates adjacent M&amp;A optionality</li>
+            </ul>
+          </td>
+          <td>
+            <div class="angle">
+              <span class="hook-label">IB Hook</span>
+              Refi window open. <b>Pitch capital-structure optimization</b> while analyst tailwind is fresh.
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="arrow-cell up">↑</td>
+          <td><div class="company">MSCI</div></td>
+          <td><span class="ticker">MSCI</span></td>
+          <td>
+            <span class="chip up">Tailwind</span>
+            <p class="lede">Asian equities index +2.2% to near-record; Asia Pacific +2.3% on May 4; EM +2.9% record high; tech gauge +4.7%.</p>
+            <ul class="detail">
+              <li>Driven by AI-chipmaker performance and megacap tech beats</li>
+              <li>Strongest intraday since April 8</li>
+            </ul>
+            <div class="src">Sources: <a href="#">[3]</a> <a href="#">[6]</a> <a href="#">[4]</a> <a href="#">[5]</a></div>
+          </td>
+          <td>
+            <div class="angle">
+              <span class="hook-label">IB Hook</span>
+              <b>Index reconstitution &amp; passive-active conversations</b> with institutional clients; cross-border M&amp;A activity in regional players seeking scale.
+            </div>
+          </td>
+        </tr>
+
+        <tr class="alt">
+          <td class="arrow-cell flat">→</td>
+          <td><div class="company">Fiserv</div></td>
+          <td><span class="ticker">FISV</span></td>
+          <td>
+            <span class="chip watch">PT cut</span>
+            <p class="lede">Susquehanna maintains Positive but lowers PT $99 → $91.</p>
+            <ul class="detail">
+              <li>Small Business Index: U.S. small-biz sales +1.1% YoY in April</li>
+            </ul>
+          </td>
+          <td>
+            <div class="angle">
+              <span class="hook-label">IB Hook</span>
+              Valuation compression may dampen near-term ECM appetite. <b>Position around equity-linked structures</b> if window narrows.
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="arrow-cell up">↑</td>
+          <td><div class="company">Western Digital</div></td>
+          <td><span class="ticker">WDC</span></td>
+          <td>
+            <span class="chip up">Repriced</span>
+            <p class="lede">Three PT raises within hours: China Renaissance +$215, Argus +$200, Baird +$140.</p>
+            <ul class="detail">
+              <li>Synchronized analyst conviction on AI-storage thesis</li>
+              <li>Capacity expansion creates refinancing optionality</li>
+            </ul>
+          </td>
+          <td>
+            <div class="angle">
+              <span class="hook-label">IB Hook</span>
+              <b>Refi / capex-debt window open</b>; pitch structured solutions while sentiment is constructive.
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- =========================================================
+       TIER 3 — MONITORING  (header unchanged, condensed rows)
+       ========================================================= -->
+  <div class="section-bar">TIER 3 — MONITORING</div>
+  <section class="tier">
+    <table class="tier-table">
+      <colgroup>
+        <col class="c-arrow"/>
+        <col class="c-company"/>
+        <col class="c-ticker"/>
+        <col class="c-head"/>
+        <col class="c-angle"/>
+      </colgroup>
+      <thead>
+        <tr><th></th><th>Company</th><th>Ticker</th><th>Headline</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="arrow-cell down">↓</td>
+          <td><div class="company">Roblox</div></td>
+          <td><span class="ticker">RBLX</span></td>
+          <td>
+            <span class="chip down">PT cuts</span>
+            <p class="lede">Two analysts cut PTs within hours — both ratings still positive.</p>
+            <ul class="detail">
+              <li>B. Riley $100 → $80; Macquarie $140 → $80</li>
+              <li>Near-term valuation reset, long-term thesis intact</li>
+            </ul>
+          </td>
+          <td><div class="angle">Monitor; no action.</div></td>
+        </tr>
+        <tr class="alt empty-row">
+          <td class="arrow-cell flat">—</td>
+          <td><div class="company">NVIDIA</div></td>
+          <td><span class="ticker">NVDA</span></td>
+          <td colspan="2">No material developments this period.</td>
+        </tr>
+        <tr>
+          <td class="arrow-cell flat">→</td>
+          <td><div class="company">Cisco</div></td>
+          <td><span class="ticker">CSCO</span></td>
+          <td>
+            <span class="chip flat">Product</span>
+            <p class="lede">Open-sourced Model Provenance Kit to help enterprises vet third-party AI models.</p>
+            <ul class="detail"><li>Q3 fiscal 2026 earnings call scheduled</li></ul>
+          </td>
+          <td><div class="angle">Watch enterprise-AI-procurement narrative; refresh ahead of print.</div></td>
+        </tr>
+        <tr class="alt">
+          <td class="arrow-cell flat">→</td>
+          <td><div class="company">Workday</div></td>
+          <td><span class="ticker">WDAY</span></td>
+          <td>
+            <span class="chip watch">Regulatory</span>
+            <p class="lede">EU Data Protection Board scrutiny on personal-data handling in AI model training.</p>
+          </td>
+          <td><div class="angle">GDPR exposure to watch; flag for compliance / governance teams.</div></td>
+        </tr>
+        <tr>
+          <td class="arrow-cell up">↑</td>
+          <td><div class="company">Airbnb</div></td>
+          <td><span class="ticker">ABNB</span></td>
+          <td>
+            <span class="chip up">Upgrade</span>
+            <p class="lede">Oppenheimer upgrades to Outperform, $180 PT; Q1 EPS $0.30 (+25% YoY); revenue $2.62B (+15.4%).</p>
+          </td>
+          <td><div class="angle">Brand / consumer M&amp;A narrative strengthening.</div></td>
+        </tr>
+        <tr class="alt">
+          <td class="arrow-cell down">↓</td>
+          <td><div class="company">Mobileye</div></td>
+          <td><span class="ticker">MBLY</span></td>
+          <td>
+            <span class="chip down">Impairment</span>
+            <p class="lede">Intel takes $4.07B goodwill impairment on Mobileye in Q1 2026.</p>
+            <ul class="detail"><li>Contributes to parent's $3.728B GAAP net loss</li></ul>
+          </td>
+          <td><div class="angle">Spin / divestiture chatter likely to resurface.</div></td>
+        </tr>
+        <tr>
+          <td class="arrow-cell flat">→</td>
+          <td><div class="company">Unity Software</div></td>
+          <td><span class="ticker">U</span></td>
+          <td>
+            <span class="chip watch">Pre-print</span>
+            <p class="lede">AI pivot underway with building analyst optimism ahead of upcoming earnings.</p>
+          </td>
+          <td><div class="angle">Refresh thesis ahead of print; limited financial detail to date.</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- =========================================================
+       TIER 4 — PERIPHERAL  (header unchanged, condensed rows)
+       ========================================================= -->
+  <div class="section-bar">TIER 4 — PERIPHERAL</div>
+  <section class="tier">
+    <table class="tier-table">
+      <colgroup>
+        <col class="c-arrow"/>
+        <col class="c-company"/>
+        <col class="c-ticker"/>
+        <col class="c-head"/>
+        <col class="c-angle"/>
+      </colgroup>
+      <thead>
+        <tr><th></th><th>Company</th><th>Ticker</th><th>Headline</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="arrow-cell up">↑</td>
+          <td><div class="company">Apple</div></td>
+          <td><span class="ticker">AAPL</span></td>
+          <td>
+            <span class="chip up">Beat</span>
+            <p class="lede">Q2 performance exceeded bull expectations; surge in stock price and stronger Q3 revenue signal.</p>
+          </td>
+          <td><div class="angle">No coverage action; watch supply-chain implications.</div></td>
+        </tr>
+        <tr class="alt">
+          <td class="arrow-cell flat">→</td>
+          <td><div class="company">Arista Networks</div></td>
+          <td><span class="ticker">ANET</span></td>
+          <td>
+            <span class="chip flat">Pre-print</span>
+            <p class="lede">Q1 2026 earnings May 5; Zacks consensus $0.81 / Earnings ESP +2.79%.</p>
+          </td>
+          <td><div class="angle">AI data-center narrative shifting; refresh model.</div></td>
+        </tr>
+        <tr>
+          <td class="arrow-cell up">↑</td>
+          <td><div class="company">Hewlett Packard Enterprise</div></td>
+          <td><span class="ticker">HPE</span></td>
+          <td>
+            <span class="chip up">Reaffirmed</span>
+            <p class="lede">Buy rating reaffirmed; AI identified as the dominant growth theme.</p>
+          </td>
+          <td><div class="angle">Constructive backdrop for any near-term capital-markets activity.</div></td>
+        </tr>
+        <tr class="alt">
+          <td class="arrow-cell flat">→</td>
+          <td><div class="company">Zoom</div></td>
+          <td><span class="ticker">ZM</span></td>
+          <td>
+            <span class="chip flat">Marketing</span>
+            <p class="lede">Inaugural Zoom Solopreneur 50 program launched; brand initiative — no direct financial impact.</p>
+          </td>
+          <td><div class="angle">No action.</div></td>
+        </tr>
+        <tr>
+          <td class="arrow-cell flat">→</td>
+          <td><div class="company">Motorola Solutions</div></td>
+          <td><span class="ticker">MSI</span></td>
+          <td>
+            <span class="chip flat">Pre-print</span>
+            <p class="lede">Q1 2026 earnings May 7 — Street expects $1.53B product (+5.5%) / $1.17B service (+8.3%).</p>
+            <ul class="detail"><li>5.7% avg trailing 4Q earnings surprise</li></ul>
+          </td>
+          <td><div class="angle">History of beats; refresh thesis pre-print.</div></td>
+        </tr>
+        <tr class="alt">
+          <td class="arrow-cell flat">→</td>
+          <td><div class="company">Lumentum</div></td>
+          <td><span class="ticker">LITE</span></td>
+          <td>
+            <span class="chip flat">Valuation</span>
+            <p class="lede">Mentioned alongside Datadog as potentially trading below fair value; no specific PT.</p>
+          </td>
+          <td><div class="angle">No immediate action; flag for valuation review.</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- =========================================================
+       SECTOR THEMES  (header unchanged, content redesigned)
+       ========================================================= -->
+  <div class="section-bar">SECTOR THEMES &amp; CROSS-CUTTING DYNAMICS</div>
+  <section class="themes">
+
+    <div class="theme">
+      <h4><span class="num">01</span>AI-Infrastructure Capex Arms Race Reshaping M&amp;A Landscape</h4>
+      <div class="body">
+        <b>MSFT ($56.3B Q rev / 40% Azure growth), GOOGL ($180–190B 2026 capex / $460B backlog), and OpenAI ($10B JV / $4B new commitments)</b> are deploying unprecedented capital into AI infrastructure — signaling confidence in long-term ROI and creating urgency for bolt-on acquisitions in compute, storage, networking. Synchronized analyst upgrades across infra vendors (<b>WDC PTs +65–67%, MCHP +33%, AVGO momentum</b>) confirm the cycle.
+      </div>
+      <div class="imp">
+        <b>IB Implication</b>
+        Expect mandate flow for infrastructure-layer acquisitions, debt financing for capex-heavy strategies, and divestitures of non-core hyperscaler assets. <b>Cross-border consolidation in semis / storage / networking</b> is the under-priced angle as regional players seek scale to compete with hyperscaler-backed buildouts.
+      </div>
+    </div>
+
+    <div class="theme">
+      <h4><span class="num">02</span>Enterprise AI Security &amp; Governance Creating Acquisition Urgency</h4>
+      <div class="body">
+        <b>Palo Alto Networks' Portkey acquisition (AI gateway), Microchip's post-quantum cryptography expansion, and Akamai's AI-powered Brand Guardian launch</b> reflect urgent enterprise demand for AI transaction monitoring, secure-boot, and fraud prevention. PANW CEO commentary that GenAI is "uncovering years of bad code" reframes security as <b>mission-critical, not discretionary</b>.
+      </div>
+      <div class="imp">
+        <b>IB Implication</b>
+        Strong M&amp;A appetite for cybersecurity / compliance-focused AI infra plays — particularly those addressing emerging vulnerabilities in legacy systems. <b>Favorable exit windows</b> for well-positioned private targets; <b>secondary-offering windows</b> for public security vendors.
+      </div>
+    </div>
+
+    <div class="theme">
+      <h4><span class="num">03</span>Vertical-Specific AI Monetization Driving Platform Consolidation</h4>
+      <div class="body">
+        <b>Salesforce Agentforce / Data 360 hit $1.4B ARR (+114% YoY)</b> while cutting 4,000 support roles; <b>ServiceNow expanding healthcare partnerships</b>; <b>DoorDash launching B2B catering / merchant-enablement tools</b>; <b>Stripe shipping 288 product launches</b> including AI-payment infra. Each vertical's "AI monetizer" is becoming the consolidator.
+      </div>
+      <div class="imp">
+        <b>IB Implication</b>
+        Likely <b>IPO or sale within 12–24 months</b> for the leading AI monetizer in each vertical. Begin relationship-building and preliminary valuation work now; advise PE sponsors and strategic buyers on accelerated negotiations with reduced founder-dilution concerns.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       UPCOMING EVENTS  (header unchanged, mild table polish)
+       ========================================================= -->
+  <div class="section-bar">UPCOMING EVENTS TO WATCH</div>
+  <section class="events">
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Company</th><th>Event</th></tr>
+      </thead>
+      <tbody>
+        <tr class="group-row"><td colspan="3">This week</td></tr>
+        <tr>
+          <td class="date">Tue · May 5</td>
+          <td class="tk">Arista Networks <span class="ticker-mono">(ANET)</span></td>
+          <td class="ev">Q1 2026 earnings — Zacks consensus $0.81; Earnings ESP +2.79%.</td>
+        </tr>
+        <tr class="alt">
+          <td class="date">Wed · May 6</td>
+          <td class="tk">DoorDash <span class="ticker-mono">(DASH)</span></td>
+          <td class="ev">Q1 2026 earnings report.</td>
+        </tr>
+        <tr>
+          <td class="date">Thu · May 7</td>
+          <td class="tk">Cloudflare <span class="ticker-mono">(NET)</span></td>
+          <td class="ev">Q1 2026 earnings — after market close.</td>
+        </tr>
+        <tr class="alt">
+          <td class="date">Thu · May 7</td>
+          <td class="tk">Motorola Solutions <span class="ticker-mono">(MSI)</span></td>
+          <td class="ev">Q1 2026 earnings — Street: $1.53B product / $1.17B service.</td>
+        </tr>
+
+        <tr class="group-row"><td colspan="3">Coming weeks</td></tr>
+        <tr>
+          <td class="date">Tue · May 27</td>
+          <td class="tk">Snowflake <span class="ticker-mono">(SNOW)</span></td>
+          <td class="ev">Q1 FY2027 financial results.</td>
+        </tr>
+        <tr class="alt">
+          <td class="date">Wed · Jun 3</td>
+          <td class="tk">Broadcom <span class="ticker-mono">(AVGO)</span></td>
+          <td class="ev">Q2 FY2026 earnings.</td>
+        </tr>
+        <tr>
+          <td class="date">Jun 15–18</td>
+          <td class="tk">Databricks</td>
+          <td class="ev">Data + AI Summit 2026 — Moscone Center, San Francisco.</td>
+        </tr>
+
+        <tr class="group-row"><td colspan="3">TBD</td></tr>
+        <tr>
+          <td class="date">TBD</td>
+          <td class="tk">Salesforce <span class="ticker-mono">(CRM)</span></td>
+          <td class="ev">Google Cloud agentic-workflow partnership rollout.</td>
+        </tr>
+        <tr class="alt">
+          <td class="date">TBD</td>
+          <td class="tk">Palo Alto Networks <span class="ticker-mono">(PANW)</span></td>
+          <td class="ev">Portkey acquisition close — Q4 fiscal 2026.</td>
+        </tr>
+        <tr>
+          <td class="date">TBD</td>
+          <td class="tk">ServiceNow <span class="ticker-mono">(NOW)</span></td>
+          <td class="ev">Investor day — AI product innovation &amp; pricing strategies.</td>
+        </tr>
+        <tr class="alt">
+          <td class="date">TBD</td>
+          <td class="tk">Figma <span class="ticker-mono">(FIG)</span></td>
+          <td class="ev">Q1 2025 earnings report.</td>
+        </tr>
+        <tr>
+          <td class="date">TBD</td>
+          <td class="tk">Cisco <span class="ticker-mono">(CSCO)</span></td>
+          <td class="ev">Q3 fiscal 2026 earnings conference call.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- =========================================================
+       FOOTER  (unchanged from original template)
+       ========================================================= -->
+  <footer class="footer">
+    <div class="q">Questions?</div>
+    <div class="ftxt">
+      Please contact the <a href="#">GIB Data Engineering team</a><br/>
+      or reply directly with feedback to improve future briefs.
+    </div>
+    <div class="colophon">
+      Aiden™ · Morning Intelligence Brief — Generated 05:47 ET<br/>
+      RBC Capital Markets · GIB US Technology Coverage
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
