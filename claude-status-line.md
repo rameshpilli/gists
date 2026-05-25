@@ -10,3 +10,8 @@
 
 Referene: 
   [Opus 4.7] │ add-gmail │ ctx [░░░░░░░░░░] 0% │ses [░░░░░░░░░░] 0% (↻ 4:50PM)
+
+
+------
+Helper prompts
+1. Ask Claude to create a todo list when working on complex tasks to track prgoress and remain on track
