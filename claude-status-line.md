@@ -15,3 +15,5 @@ Referene:
 ------
 Helper prompts
 1. Ask Claude to create a todo list when working on complex tasks to track prgoress and remain on track
+
+2.  spin up a multi-agent adversarial challenge: independent auditors, competing principal-engineer architectures, skeptics that attack each, then a synthesized blueprint. Then build it.
