@@ -17,3 +17,62 @@ Helper prompts
 1. Ask Claude to create a todo list when working on complex tasks to track prgoress and remain on track
 
 2.  spin up a multi-agent adversarial challenge: independent auditors, competing principal-engineer architectures, skeptics that attack each, then a synthesized blueprint. Then build it.
+
+------
+Build this project using modern Agentic Engineering Python project structure.
+
+Core requirements:
+
+1. Use `pyproject.toml`
+   - Do not use `requirements.txt`.
+   - Define dependencies, project metadata, scripts, and tooling inside `pyproject.toml`.
+   - The project should be installable with:
+     `pip install -e .`
+
+2. Write modular, reusable code
+   - Split the implementation into small, focused pieces.
+   - Each file/module should have a clear responsibility.
+   - Functions/classes should be importable and reusable.
+   - Avoid writing one large script with everything inside it.
+   - Design the code so it can be expanded later without major rewrites.
+
+3. Prefer real execution tests over pytest-style unit test modules
+   - Do not create traditional `pytest` test files unless specifically requested.
+   - Instead, create runnable examples or verification scripts that execute the actual project behavior.
+   - Tests should reflect real usage:
+     - provide input
+     - run the implementation
+     - capture the actual output
+     - compare it to the expected output
+   - The goal is to verify the project by running the real output path, not only isolated mock-based tests.
+
+4. Project structure should be clean and maintainable
+   - Use a `src/` layout.
+   - Keep application logic separate from CLI/input-output logic.
+   - Keep reusable logic in importable modules.
+   - Put runnable verification scripts in a dedicated folder such as `checks/`, `examples/`, or `verification/`.
+
+5. Include clear run instructions
+   - Show how to install the project.
+   - Show how to run the main program.
+   - Show how to run the verification scripts.
+   - Include example inputs and expected outputs.
+
+Expected structure:
+
+```text
+project-name/
+├── pyproject.toml
+├── README.md
+├── src/
+│   └── project_name/
+│       ├── __init__.py
+│       ├── core.py
+│       ├── parser.py
+│       ├── formatter.py
+│       └── cli.py
+├── examples/
+│   └── sample_input.txt
+└── checks/
+    ├── check_basic_case.py
+    └── check_edge_cases.py
