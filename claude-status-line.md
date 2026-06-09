@@ -76,3 +76,6 @@ project-name/
 └── checks/
     ├── check_basic_case.py
     └── check_edge_cases.py
+Repo_MAP.md:
+- Repository Map
+- Every top-level folder and the key files within it. Folder-level READMEs add per-folder detail (purpose, ownership, inputs, outputs, dependencies, and local/prod/mock/placeholder/future status).
