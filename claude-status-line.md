@@ -18,7 +18,7 @@ Helper prompts
 2.  spin up a multi-agent adversarial challenge: independent auditors, competing principal-engineer architectures, skeptics that attack each, then a synthesized blueprint. Then build it.
 3.  Run a brick-by-brick audit: parallel deep readers over every subsystem (backend + frontend), then dedicated hunters for dead code / bugs / performance / best-practices / doc-drift, then adversarial skeptics who must confirm or refute every finding against the actual code (this codebase was audited "exceptionally clean" once before, and my one past over-eager optimization caused a deadlock — so nothing gets acted on unverified), then a synthesis into safe-fix-now vs plan-later vs UI enhancements vs platform gaps. After it returns, implement the verified safe set + doc updates myself, gate everything, and bring you the plan for the rest.
 4. Mental model explanation:
-   ```
+```
   Email arrives
   │
   ├─ Layer 1: sender domain + subject keywords + filename + deal-id   (no open)
@@ -31,7 +31,8 @@ Helper prompts
   │     match? ── yes ──► DONE
   │     no
   └─ Human review queue (classification_below_threshold)
-  ```
+```
+
 ------
 Build this project using modern Agentic Engineering Python project structure.
 
