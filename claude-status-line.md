@@ -94,3 +94,45 @@ project-name/
 Repo_MAP.md:
 - Repository Map
 - Every top-level folder and the key files within it. Folder-level READMEs add per-folder detail (purpose, ownership, inputs, outputs, dependencies, and local/prod/mock/placeholder/future status).
+
+
+
+-------
+Here's the breakdown of that final stretch, after Chander pulled you and Jessica in.
+
+**The workflow he walked through (confirmed as-is)**
+
+He demoed the seller notes screen and confirmed how it works today: a user clicks "create monthly seller report" for a given month (e.g. May 2026), and the system picks up the latest template and opens it. Behind the scenes, the VBA macro file does the heavy lifting — it populates all the supporting data and generates the template, leaving the yellow cells and other fillable columns empty for the manual values.
+
+**The feature he explicitly wants built (the main ask)**
+
+He wants a human-in-the-loop review pop-up inserted *before* the template opens — modeled on Carol and Jamel's UI. When the user clicks "create seller report," instead of going straight to the template, they get a pop-up that shows:
+
+1. The attributes extracted from the client seller report (PDF or Excel) — the **source**
+2. The specific cells each value will be copied into — the **destination**
+3. A **confidence level** per attribute (okay / not okay)
+4. **Editable fields**, so the user can overwrite a value if they have reason to
+5. A "transfer information to template" action — only then does the template open, pre-populated with the values they approved
+
+He was explicit that the reason he showed the Hackathon demo was *for the UI pattern* (simple, elegant, interpretable), not for the LLM/confidence mechanics.
+
+**What he confirmed you do NOT need to solve**
+
+Asset class identification is *not* derived from emails or the LLM. It's static — the extract he's giving you already states which asset classes sit under each deal. "Don't worry about that."
+
+**What he flagged as still open / needs handling**
+
+- **Password/encryption protection** on the source files — including whether the *latest version* can be protected, and how to handle it. He didn't have an answer and said he'd come back to you.
+- **Version handling** — taking the report version into account.
+- (From the earlier Q&A) the deal list shouldn't stay hardcoded; it should pull from a database/dataverse so it's dynamically updatable.
+
+**Next steps he committed to**
+
+He's sending the **mapping** (targeted for midday) and the **extract** (the ZIP file). Tuesday catch-up planned, later in the day so Sandeep can join.
+
+Want me to turn the open items into a follow-up question list for him, the way we did for the earlier Chander questions?
+
+
+
+
+
