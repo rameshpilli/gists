@@ -743,3 +743,245 @@ Suggested internal metrics:
 - **Index** handles ingestion, synchronization, retrieval, and RAG.
 - **LLM-as-a-judge** is an evaluation pattern in the LlamaIndex framework, not a documented standalone LlamaParse REST endpoint.
 - Corrected classifications can improve future behavior by updating a reusable Classify configuration, but the current public API does not document automatic feedback-driven model retraining.
+
+
+
+
+-----
+
+
+# LlamaCloud Follow-up Q&A: Agent Skills and LLM-as-a-Judge
+### Q: What does the **Skills** option in LlamaCloud/LlamaParse do?
+
+In the current LlamaParse documentation, **Skills** refers to **agent skills for coding agents** such as Claude Code, Cursor, and other agents that support Vercel-style skills.
+
+A Skill is not another document-processing product or REST endpoint. It is an installable package of instructions and scripts that teaches a compatible coding agent how to invoke LlamaParse or LiteParse correctly. After installation, the coding agent can choose parsing settings, write the SDK or CLI calls, run them, and save the results without the developer having to remember every API parameter.
+
+The official installation command for the cloud-backed Parse skill is:
+
+```bash
+npx skills add run-llama/llamaparse-agent-skills --skill llamaparse
+```
+
+The official installation command for the local LiteParse skill is:
+
+```bash
+npx skills add run-llama/llamaparse-agent-skills --skill liteparse
+```
+
+Install both available skills with:
+
+```bash
+npx skills add run-llama/llamaparse-agent-skills
+```
+
+The documentation currently describes two skills:
+
+| Skill | What it does | Execution location | API key required? | Best suited for |
+|---|---|---|---:|---|
+| `llamaparse` | Full document parsing through the hosted LlamaCloud API, including complex layouts, tables, charts, and images | LlamaCloud | Yes | Complex enterprise documents and high-quality structured output |
+| `liteparse` | Local-first parsing using the LiteParse CLI/library, including text, spatial layout, OCR, bounding boxes, and screenshots | Local machine/environment | No LlamaCloud key | Plain text, simpler layouts, local workflows, and coding-agent document inspection |
+
+Example prompts after installing the `llamaparse` skill:
+
+```text
+Parse this PDF and return the content as Markdown.
+
+Extract every table from the invoices in ./invoices and save each table as CSV.
+
+Parse this financial report with Cost Optimizer enabled and save page screenshots.
+```
+
+Example prompts after installing the `liteparse` skill:
+
+```text
+Parse this PDF and return the text as JSON.
+
+Extract text from every DOCX file in ./contracts.
+
+Create screenshots of pages 1 through 5 at 300 DPI.
+
+Return the bounding boxes for every text item on page 3.
+```
+
+The practical distinction is:
+
+```text
+LlamaParse REST API / SDK
+    = the managed document-processing service
+
+LlamaParse Agent Skill
+    = instructions and automation that help a coding agent use that service
+
+LiteParse Agent Skill
+    = instructions and automation that help a coding agent use the local LiteParse tools
+```
+
+A Skill does **not** by itself:
+
+- create a new managed LlamaCloud processing endpoint;
+- train or fine-tune LlamaParse;
+- remember corrected classifications;
+- add a new document category to Classify;
+- function as a persistent production workflow unless the organization builds and operates that workflow;
+- provide a native `/skills` document-processing REST endpoint.
+
+For enterprise architecture, Agent Skills should normally be treated as a **developer-productivity integration**, not as a replacement for a controlled production service. Production applications should still call approved SDK or REST endpoints using managed credentials, logging, versioned configuration, access controls, and audit trails.
+
+Official documentation:
+
+- [LlamaParse Parse overview and Agent Skill command](https://developers.llamaindex.ai/llamaparse/parse/)
+- [Parse getting started — Alternative: use a coding agent](https://developers.llamaindex.ai/llamaparse/parse/getting_started/)
+- [LiteParse Agent Skill](https://developers.llamaindex.ai/liteparse/guides/agent-skill/)
+- [What is LiteParse?](https://developers.llamaindex.ai/liteparse/)
+
+---
+
+### Q: Does LlamaCloud/LlamaParse actually have an **LLM-as-a-judge** capability?
+
+The precise answer is:
+
+> **LlamaIndex provides LLM-as-a-judge evaluation components in its open-source application framework, but the current public LlamaCloud/LlamaParse documentation does not expose a separate managed Judge product or a documented standalone Judge REST endpoint.**
+
+The managed LlamaParse platform publicly lists these document products:
+
+```text
+Parse
+Extract
+Classify
+Split
+Sheets
+Index
+```
+
+The current public API reference does not document a managed endpoint such as:
+
+```text
+POST /api/v1/judge
+POST /api/v1/evaluate
+POST /api/v2/judge
+POST /api/v2/evaluate
+```
+
+By contrast, the **LlamaIndex framework** includes LLM-based evaluator modules. The framework documentation describes using a separate evaluation or “gold” LLM to assess generated results.
+
+| Evaluator/capability | What it checks |
+|---|---|
+| **Correctness** | Whether an answer agrees with a reference or expected answer |
+| **Faithfulness** | Whether an answer is supported by the supplied context rather than hallucinated |
+| **Answer relevance** | Whether the generated answer addresses the user’s question |
+| **Context relevance** | Whether retrieved source material is relevant to the question |
+| **Guideline adherence** | Whether output follows a defined rubric, policy, or set of rules |
+| **Pairwise comparison** | Which of two candidate outputs is better according to a judge LLM |
+| **Semantic similarity** | Whether a generated result is semantically similar to a labelled reference |
+
+Therefore, an organization can build an LLM-as-a-judge stage around LlamaCloud outputs:
+
+```text
+Document
+    ↓
+Classify
+    ↓
+Parse and/or Extract
+    ↓
+Deterministic validation
+    ├── JSON Schema
+    ├── required fields
+    ├── totals and date checks
+    ├── database/reference checks
+    └── source-citation checks
+    ↓
+Optional LLM-as-a-judge evaluator
+    ├── validate the proposed document type
+    ├── check whether extracted values are supported by the document
+    ├── identify omitted or hallucinated information
+    ├── score quality against a rubric
+    └── recommend human review
+    ↓
+Pass → downstream application
+Fail/uncertain → human-review queue
+```
+
+A custom classification-review prompt could look like this:
+
+```text
+Review the source document and the classifier result.
+
+Classifier result:
+- Predicted type: invoice
+- Classifier confidence: 0.72
+
+Allowed document types:
+- invoice
+- purchase_order
+- credit_note
+- contract
+- unknown
+
+Determine whether the predicted type is supported by the document.
+Return JSON with this structure:
+
+{
+  "accepted": true,
+  "recommended_type": "invoice",
+  "judge_score": 0.91,
+  "reason": "The document contains an invoice number, bill-to details, itemized charges, and a payment total.",
+  "needs_human_review": false
+}
+```
+
+That judge step would be implemented by the customer using the LlamaIndex evaluation framework, an LLM provider, or a custom workflow. It is not currently documented as an automatic stage inside the LlamaCloud Classify endpoint.
+
+### Does the judge result teach Classify automatically?
+
+No automatic feedback-driven learning or retraining flow is documented in the current public API.
+
+A judge can recommend that a classification is wrong, but the application must still decide what to do with that result. A controlled enterprise pattern is:
+
+```text
+Classify result
+    ↓
+Judge or human review identifies an error/new type
+    ↓
+Store the correction in the organization’s labelled dataset
+    ↓
+Update and version the saved Classify rules/configuration
+    ↓
+Regression-test the revised configuration
+    ↓
+Deploy the approved configuration for future jobs
+```
+
+The public API does not currently document correction/retraining endpoints such as:
+
+```text
+POST /classify/{job_id}/correct
+POST /classify/{job_id}/feedback
+POST /classify/retrain
+```
+
+### Recommended capability wording for a corporate comparison
+
+| Capability | Native managed LlamaCloud API/product? | Available through LlamaIndex or a custom workflow? |
+|---|---:|---:|
+| Parse | Yes | Yes |
+| Classify | Yes | Yes |
+| Extract | Yes | Yes |
+| Split | Yes, with lifecycle/version considerations | Yes |
+| Sheets | Documented, but confirm current supported API lifecycle | Yes |
+| Index/RAG | Yes | Yes |
+| Agent Skills | Not a document-processing endpoint | Yes — coding-agent integration |
+| LLM-as-a-judge | **No publicly documented standalone managed Judge endpoint** | **Yes — through LlamaIndex evaluators or a custom workflow** |
+| Automatic learning from corrected classifications | No documented managed capability | Must be implemented through feedback storage, rules/configuration updates, testing, and deployment |
+
+The safest statement for an architecture or procurement document is:
+
+> **LlamaIndex supports LLM-as-a-judge evaluation components that can be incorporated into workflows around LlamaCloud outputs. However, the current public LlamaCloud/LlamaParse API documentation does not describe a separate managed Judge API or automatic learning from judge feedback.**
+
+Official documentation:
+
+- [LlamaIndex evaluation concepts](https://developers.llamaindex.ai/python/framework/module_guides/evaluating/)
+- [LlamaIndex evaluation API reference](https://developers.llamaindex.ai/python/framework-api-reference/evaluation/)
+- [Example explicitly using the LLM-as-a-judge pattern](https://developers.llamaindex.ai/python/examples/llama_dataset/downloading_llama_datasets/)
+- [LlamaParse platform quickstart and current product list](https://developers.llamaindex.ai/)
+- [Complete public LlamaCloud/LlamaParse API reference](https://developers.llamaindex.ai/reference/)
