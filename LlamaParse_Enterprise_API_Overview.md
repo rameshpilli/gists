@@ -30,3 +30,15 @@ Whether the parser returns bounding boxes (the precondition above).
 Whether the coordinate map should live in KDB.AI alongside the parsed text or in Postgres next to the fields — depends on how the review UI queries it; confirm the read path with the team.
 
 Acceptance: reviewer sees PDF left / values right; hovering either side highlights the matching region on the correct page (correct sub-document for merged PDFs); narrative fields highlight as a range; nothing depends on pod-local storage; no re-parsing on hover.
+
+
+
+======
+
+
+
+1. Was the 62.7s / 14-narratives e2e run on the pod against real LlamaParse, or locally against the fallback parser? This is the sharp one. The byte-diff note says LlamaParse is unreachable locally and it falls back to the local parser, which emits different bytes. But section_resolver is "markdown-heading aware" — and LlamaParse's markdown structure differs from the local fallback parser's. So "all 14 resolved" locally doesn't prove they resolve, or resolve to the right spans, on real LlamaParse output. If that e2e was local, the production parser path is still unverified. Ask the agent to confirm the run environment, and if local, re-run on the pod.
+2. How robust is "LOCATOR ONLY" — and what happens when the model ignores it? The note says it "falls back to inline text if the model ignores the instruction." That fallback protects correctness (you don't lose data) but not latency — if the model inlines prose on some doc, you're back toward ~35K chars and the timeout returns silently. On this doc it honored the instruction. Question: is there a guard that catches it — e.g., if the response or a field value exceeds a size threshold, force the async path or a split — or does it just hope the model behaves every time? That's the difference between "fixed" and "fixed until a doc surprises it."
+3. Resolved ≠ correct boundaries. "14 narratives resolved" means the locators pointed somewhere and returned non-empty text. Given the parity-with-Abby accuracy bar and that reviewers will read these sections, has anyone eyeballed that the resolved spans actually match the intended source regions? Sibling-bounded heading resolution can grab an adjacent section or over/under-shoot if two headings are similar. Worth a spot-check on a couple of the 14, not just trusting the count.
+Lower priority but worth noting: it's n=1 on one EDD memo. Before relying on it, run EDD Memo 2 (the 10-narrative one) and ideally a heavier doc, and glance at p95 latency — 62s is comfortable against 120s, but you want to know the spread, not one sample.
+The async-exists and infra-confirm items being parked is correct — those are genuinely "later," and the agent flagged them rather than dropping them, which is the right behavior.
